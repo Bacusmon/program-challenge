@@ -52,8 +52,9 @@ Note: Ensure that the server and React app are not running during testing.
 
 1. To run tests for the server:
 
-    cd task-list-server
-    npm test
+   cd task-list-server
+
+   npm test
 
 This will execute the server tests using Chai for assertions, Sinon for spies, stubs, and mocks, and Mocha as the test framework.
 
