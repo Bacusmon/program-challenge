@@ -1,0 +1,580 @@
+.App {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0s;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  font-size: 13px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Arial, Helvetica, clean, sans-serif;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+  margin: 0;
+  padding: 0;
+  line-height: 20px;
+  outline: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Common styles */
+.button {
+  background-color: dodgerblue;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #007bb5;
+}
+
+/* Task component styles */
+.taskPageContainer {
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.taskPageContainer h1 {
+  text-align: center;
+  font-size: 25px;
+}
+
+.task {
+  width: 400px;
+  height: 300px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  border: 1px solid lightgray;
+  font-family: Arial, Helvetica, sans-serif;
+
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.task:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+}
+
+.task .title {
+  flex: 20%;
+  border-bottom: 1px solid lightgray;
+  background-color: #23AAAA;
+  display: grid;
+  place-content: center;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.task .description {
+  flex: 60%;
+  display: grid;
+  place-content: center;
+}
+
+.task .datetime {
+  flex: 20%;
+  border-top: 1px solid lightgray;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  padding-left: 15px;
+  background-color: #23AAAA;
+  color: white;
+}
+
+.task .username {
+  flex: 20%;
+  border-top: 1px solid lightgray;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  padding-left: 15px;
+  color: black;
+  text-decoration: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* CreateTask component styles */
+.createTaskPage {
+  width: 100%;
+  max-width: 500px;
+  margin: 30px 0px 30px 0px;
+  padding: 40px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.createTaskPage h2 {
+  text-align: center;
+  font-size: 25px;
+}
+
+.formContainer {
+  display: grid;
+  gap: 15px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.formContainer input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 50px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.createTaskPage button {
+  background-color: #23aaaa;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.createTaskPage button:hover {
+  background-color: #049191;
+}
+
+/* Navbar styles */
+.navbar {
+  width: 100%;
+  padding: 5px 10px 0px 5px;
+  background-color: #23aaaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar .navbar-content {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px 5px 7px;
+}
+
+.navbar .logo {
+  margin-right: auto;
+  margin-top: 5px;
+}
+
+.navbar h1 {
+  color: white;
+  font-size: 16px;
+}
+
+.navbar .logo .logo-img {
+  width: 121.99px;
+  height: 39.99px;
+}
+
+.menu-btn {
+  background-color: #feb708;
+  height: 40px;
+  padding: 0px 12px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin-left: 75px;
+  margin-bottom: 5px;
+}
+
+.menu-btn:hover {
+  background-color: #feb708;
+}
+
+.down-arrow {
+  margin-left: 11px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: center;
+  padding: 3px;
+  transform: rotate(45deg);
+}
+
+/* Dropdown menu styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #feb708;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 160px;
+}
+
+.dropdown-content button {
+  background-color: #feb708;
+  color: white;
+  padding: 10px;
+  border: white;
+  border-width: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  font-size: 13px;
+}
+
+.dropdown-content button:hover {
+  background-color: rgba(255, 255, 255, 0.3)
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 10px;
+  border-bottom: 1px solid white;
+}
+
+.navbar a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* INDIVIDUAL POST */
+.taskPage {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.taskPage button {
+  background-color: #23AAAA;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.taskPage button:hover {
+  background-color: #049191;
+}
+
+.taskPage .task .username {
+  align-items: center;
+  justify-content: center;
+  margin-left: 0px !important;
+}
+
+#individual {
+  height: 500px;
+  width: 600px;
+  margin-bottom: 50px;
+}
+
+#individual .title,
+#individual .datetime {
+  font-size: 25px;
+}
+
+#individual .description {
+  font-size: 20px;
+}
+
+/* Login form styles */
+.loginContainer {
+  max-width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.loginContainer {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.loginContainer .logo-img {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+.loginContainer label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.loginContainer input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.loginContainer button {
+  background-color: #23AAAA;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+.loginContainer button:hover {
+  background-color: #049191;
+}
+
+/* Registration form styles */
+.registrationContainer {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.registrationContainer .logo-img {
+  width: 100%;
+  max-width: 300px;
+}
+
+.registrationContainer label {
+  display: block;
+  font-weight: bold;
+  text-align: center;
+}
+
+.registrationContainer input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.registrationContainer button {
+  background-color: #23aaaa;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.registrationContainer button:hover {
+  background-color: #049191;
+}
+
+.last-element {
+  margin-bottom: 60px;
+}
+
+/* Footer styles */
+.footer {
+  width: 100%;
+  padding: 35px 0 50px;
+  background-color: #23aaaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.footer .footer-content {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.footer .footer-logo {
+  width: 100%;
+  max-width: 200px;
+  height: 100%;
+  max-height: 140px !important;
+}
+
+.footer-column {
+  flex: 1;
+  padding: 0 15px;
+  text-align: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  max-width: 160px;
+}
+
+.footer h3 {
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer ul li {
+  cursor: pointer;
+  color: white;
+}
+
+.footer .social-media-icons {
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  align-content: center;
+  padding: 30px 0px 0px 20px !important;
+}
+
+.icon {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 30px;
+  transform: translate(-50%, -50%);
+}
+
+
+.help-center-button {
+  background-color: #007bb5;
+  color: white;
+  padding: 7px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.help-center-button:hover {
+  background-color: #005a8c;
+}
+
+/* Profile Page styles */
+
+.profilePageContainer {
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.profilePageContainer .task .datetime {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.profilePageContainer .basicInfo {
+  padding-top: 30px;
+}
+
+.profilePageContainer h1 {
+  text-align: center;
+  font-size: 25px;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 5px 0;
+  }
+
+  .task,
+  .createTaskPage {
+    max-width: 100%;
+  }
+
+  .task .datetime {
+    padding-left: 15px;
+  }
+
+  .footer-column {
+    flex: 100%;
+  }
+}
